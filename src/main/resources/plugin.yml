@@ -1,0 +1,12 @@
+name: Aliases
+version: '${project.version}'
+main: by.quaks.aliases.Aliases
+api-version: '1.18'
+author: Quaks
+website: https://github.com/qu4ks/Aliases
+commands:
+  alias:
+    aliases: [ a ]
+    usage: "/alias [record/{aliasName}]"
+    description: "Make an alias!"
+
