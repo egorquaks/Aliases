@@ -19,7 +19,7 @@ public class AsyncDao<T> {
     public CompletableFuture<Void> createCacheForUUID(UUID uuid) {
         return CompletableFuture.runAsync(()->{
             uuidCache.get(uuid, key -> {
-                Bukkit.getLogger().info("Загружен в кэш "+uuid);
+                //Bukkit.getLogger().info("Загружен в кэш "+uuid);
                 try {
                     return dao.queryForEq("UUID", uuid);
                 } catch (Exception e) {
@@ -38,20 +38,20 @@ public class AsyncDao<T> {
             }
             if (updatedResult != null) {
                 uuidCache.put(uuid, updatedResult);
-                Bukkit.getLogger().info("Обновлён кэш "+uuid);
+                //Bukkit.getLogger().info("Обновлён кэш "+uuid);
             }
         });
     }
     public CompletableFuture<Void> evictCacheForUUID(UUID uuid) {
         return CompletableFuture.runAsync(()->{
             uuidCache.invalidate(uuid);
-            Bukkit.getLogger().info("Выгружено из кэша "+uuid);
+            //Bukkit.getLogger().info("Выгружено из кэша "+uuid);
         });
     }
 
     public void clearCache() {
         uuidCache.invalidateAll();
-        Bukkit.getLogger().info("Кэш очищен");
+        //Bukkit.getLogger().info("Кэш очищен");
     }
 
     public CompletableFuture<Void> createCacheForPlayers(Collection<? extends Player> players) {
